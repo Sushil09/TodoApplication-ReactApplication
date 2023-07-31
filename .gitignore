@@ -1,0 +1,3 @@
+# Project exclude paths
+/assignment-1/routes/todo.js
+/assignment-1/index.js
