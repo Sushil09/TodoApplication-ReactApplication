@@ -21,7 +21,7 @@ app.use(cors(corsOptions));
 app.use("/auth",authRouter);
 app.use("/todo",todosRouter);
 
-mongoose.connect('mongodb+srv://sushilofficial:Hakuna%40123@cluster0.u91nm26.mongodb.net/todos');
+mongoose.connect('mongodb+srv://sushilofficial:*****@cluster0.u91nm26.mongodb.net/todos');
 
 app.listen(3000, () => {
     console.log('Server is listening on port 3000');
