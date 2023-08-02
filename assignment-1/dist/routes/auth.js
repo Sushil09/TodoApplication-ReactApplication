@@ -17,14 +17,16 @@ const express_1 = __importDefault(require("express"));
 const middleware_1 = require("../middleware/");
 const db_1 = require("../db");
 const router = express_1.default.Router();
-const zod_1 = require("zod");
+// import {z} from 'zod';
+const common_1 = require("@sushil09/common");
 //creating the schema for zod validation
-const signInput = zod_1.z.object({
-    username: zod_1.z.string().email({ message: "Invalid email address" }),
-    password: zod_1.z.string().min(6)
-});
+// const signInput = z.object({
+//     username: z.string().email({message: "Invalid email address"}),
+//     password: z.string().min(6)
+// })
+// type SignUpParams=z.infer<typeof signInput>;
 router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const parsedInput = signInput.safeParse(req.body);
+    const parsedInput = common_1.signInput.safeParse(req.body);
     // const { username, password } = payload;
     if (!parsedInput.success) {
         return res.status(411).json({ msg: parsedInput.error });
@@ -43,7 +45,7 @@ router.post('/signup', (req, res) => __awaiter(void 0, void 0, void 0, function*
     }
 }));
 router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const parsedInput = signInput.safeParse(req.body);
+    const parsedInput = common_1.signInput.safeParse(req.body);
     // const { username, password } = payload;
     if (!parsedInput.success) {
         return res.status(411).json({ msg: parsedInput.error });

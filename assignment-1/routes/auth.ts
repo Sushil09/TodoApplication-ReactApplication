@@ -4,14 +4,16 @@ import {authenticateJwt, SECRET} from "../middleware/";
 import {User} from "../db";
 
 const router = express.Router();
-import {z} from 'zod';
+// import {z} from 'zod';
+import {signInput} from '@sushil09/common';
 
 //creating the schema for zod validation
-const signInput = z.object({
-    username: z.string().email({message: "Invalid email address"}),
-    password: z.string().min(6)
-})
+// const signInput = z.object({
+//     username: z.string().email({message: "Invalid email address"}),
+//     password: z.string().min(6)
+// })
 
+// type SignUpParams=z.infer<typeof signInput>;
 router.post('/signup', async (req, res) => {
     const parsedInput = signInput.safeParse(req.body);
     // const { username, password } = payload;
